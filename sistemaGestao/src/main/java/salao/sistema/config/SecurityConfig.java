@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/registration",
                         "/cadastroCliente",
+                        "/cadastroServico",
                         "/js/**",
                         "/build/**",
                         "/images/**",
