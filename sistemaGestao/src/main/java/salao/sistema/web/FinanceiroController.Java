@@ -32,7 +32,7 @@ public class FinanceiroController {
     }
 
     @PostMapping
-    public String registerFinanceiro(@ModelAttribute("user") @Valid Financeiro financeiro,
+    public String registerFinanceiro(@ModelAttribute("Operacao") @Valid Financeiro financeiro,
                                       BindingResult result){
 
         if (result.hasErrors()){

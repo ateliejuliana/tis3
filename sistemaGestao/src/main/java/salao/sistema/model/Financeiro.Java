@@ -3,7 +3,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class Usuario {
+public class Financeiro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
