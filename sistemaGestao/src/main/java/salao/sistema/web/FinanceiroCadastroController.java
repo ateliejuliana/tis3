@@ -17,8 +17,8 @@ import salao.sistema.web.dto.UsuarioCadastroDto;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/financeiro")
-public class FinanceiroController {
+@RequestMapping("/CadastroFinanceiro")
+public class FinanceiroCadastroController {
 
     @Autowired
     private FinanceiroRepository financeiroRepository;
@@ -30,7 +30,7 @@ public class FinanceiroController {
 
     @GetMapping
     public String showFinanceiroForm(Model model) {
-        return "financeiro";
+        return "cadastroFinanceiro";
     }
 
     @PostMapping
@@ -38,11 +38,11 @@ public class FinanceiroController {
                                      BindingResult result){
 
         if (result.hasErrors()){
-            return "financeiro";
+            return "cadastroFinanceiro";
         }
 
         financeiroRepository.save(financeiro);
-        return "redirect:/financeiro?success";
+        return "redirect:/cadastroFinanceiro?success";
     }
 
 }
