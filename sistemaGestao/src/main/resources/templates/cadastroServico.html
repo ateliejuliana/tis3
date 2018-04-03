@@ -284,16 +284,6 @@
           <div class="title_left">
             <h3>Serviços</h3>
           </div>
-          <div class="title_right">
-            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Pesquisar por...">
-                <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Pesquisar</button>
-                    </span>
-              </div> <!-- Div de Pesquisa-->
-            </div>
-          </div>
         </div>
 
         <div class="row">
@@ -321,28 +311,41 @@
                   </div>
                 </div>
                 <br />
-                <form id="demo-form2" th:action="@{/cadastroServico}" th:object="${servico}" data-parsley-validate class="form-horizontal form-label-left">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nomeServico">Nome do serviço<span class="required">*</span>
+                <form id="demo-form2" th:action="@{/cadastroServico}" th:object="${servico}" method="post" class="form-horizontal form-label-left">
+                  <div class="form-group" th:classappend="${#fields.hasErrors('nomeServico')}? 'has-error':''">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nomeServico">Nome do serviço<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text"  th:field="*{nome}" id="nomeServico" required="required" class="form-control col-md-7 col-xs-12">
-                    </div>
+                      <input type="text"  th:field="*{nomeServico}" id="nomeServico" required="required" class="form-control col-md-7 col-xs-12">
+                      <p class="error-message"
+                         th:if="${#fields.hasGlobalErrors()}"
+                         th:each="error : ${#fields.errors('global')}"
+                         th:text="${error}">Validation error</p>
+                      </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" th:classappend="${#fields.hasErrors('categoria')}? 'has-error':''">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="categoria">Categoria *</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12" >
                       <select id="categoria"  th:field="*{categoria}" class="form-control" required>
                         <option value=""></option>
                         <option value="cabelo">Cabelo</option>
                         <option value="Pele">Pele</option>
                         <option value="unha">Unha</option>
                       </select>
-                    </div>
+                      <p class="error-message"
+                         th:if="${#fields.hasGlobalErrors()}"
+                         th:each="error : ${#fields.errors('global')}"
+                         th:text="${error}">Validation error</p>
+                      </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" th:classappend="${#fields.hasErrors('descricao')}? 'has-error':''">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                       <input type="text" th:field="*{descricao}" id="descricao" class="form-control" placeholder="(Opcional)">
+                      <p class="error-message"
+                         th:if="${#fields.hasGlobalErrors()}"
+                         th:each="error : ${#fields.errors('global')}"
+                         th:text="${error}">Validation error</p>
                     </div>
                   </div>
                   <div class="ln_solid"></div>
@@ -350,7 +353,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button class="btn btn-primary" type="button">Cancelar</button>
                       <button class="btn btn-primary" type="reset">Limpar</button>
-                      <button onclick="salvaServicos() "type="submit" class="btn btn-success">Concluir</button>
+                      <button type="submit" class="btn btn-success">Concluir</button>
                     </div>
                   </div>
                 </form>
