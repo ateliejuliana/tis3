@@ -12,18 +12,12 @@ public class Financeiro {
     private String tipo;
     private String descricao;
 
-    public Usuario() {
+    public Financeiro() {
     }
 
-    public Usuario(String tipo, String descricao) {
-       this.tipo = tipo;
-       this.descricao = descricao;
-    }
-
-    public Usuario(SString tipo, String descricao, Collection<Role> roles) {
+    public Financeiro(String tipo, String descricao) {
         this.tipo = tipo;
         this.descricao = descricao;
-        this.roles = roles;
     }
 
     public Long getId() {
@@ -35,7 +29,7 @@ public class Financeiro {
     }
 
     public String getTipo() {
-        return firstName;
+        return tipo;
     }
 
     public void setTipo(String tipo) {
@@ -43,19 +37,11 @@ public class Financeiro {
     }
 
     public String getDescricao() {
-        return lastName;
+        return descricao;
     }
 
     public void setDescricao(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
     }
 
     @Override
@@ -64,7 +50,6 @@ public class Financeiro {
                 "id=" + id +
                 ", tipo='" + tipo + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", roles=" + roles +
                 '}';
     }
 }

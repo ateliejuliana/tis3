@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import salao.sistema.model.Financeiro;
 import salao.sistema.model.Usuario;
+import salao.sistema.repository.FinanceiroRepository;
 import salao.sistema.service.UsuarioService;
 import salao.sistema.web.dto.UsuarioCadastroDto;
 
@@ -33,7 +35,7 @@ public class FinanceiroController {
 
     @PostMapping
     public String registerFinanceiro(@ModelAttribute("Operacao") @Valid Financeiro financeiro,
-                                      BindingResult result){
+                                     BindingResult result){
 
         if (result.hasErrors()){
             return "financeiro";
