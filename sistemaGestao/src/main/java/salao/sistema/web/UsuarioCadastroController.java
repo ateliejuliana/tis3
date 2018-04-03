@@ -45,7 +45,7 @@ public class UsuarioCadastroController {
         }
 
         usuarioService.save(usuarioDto);
-        return "redirect:/cadastroUsuario?success";
+        return "redirect:/login?success";
     }
 
 }

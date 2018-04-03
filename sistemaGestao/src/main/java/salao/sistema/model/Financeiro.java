@@ -1,31 +1,21 @@
 package salao.sistema.model;
+
+
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
+@Table
 public class Financeiro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     private String tipo;
     private String descricao;
 
-    public Financeiro() {
-    }
-
-    public Financeiro(String tipo, String descricao) {
-        this.tipo = tipo;
-        this.descricao = descricao;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTipo() {
@@ -40,13 +30,13 @@ public class Financeiro {
         return descricao;
     }
 
-    public void setDescricao(String tipo) {
-        this.tipo = tipo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override
     public String toString() {
-        return "Operacao{" +
+        return "Financeiro{" +
                 "id=" + id +
                 ", tipo='" + tipo + '\'' +
                 ", descricao='" + descricao + '\'' +

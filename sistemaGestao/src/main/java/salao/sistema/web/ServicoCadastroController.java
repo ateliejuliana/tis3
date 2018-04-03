@@ -19,6 +19,7 @@ public class ServicoCadastroController {
 
     @Autowired
     private ServicoRepository servicoRepository;
+
     @ModelAttribute("servico")
     public Servico servico() {
         return new Servico();

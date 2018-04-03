@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import salao.sistema.model.Financeiro;
-import salao.sistema.model.Usuario;
 import salao.sistema.repository.FinanceiroRepository;
-import salao.sistema.service.UsuarioService;
-import salao.sistema.web.dto.UsuarioCadastroDto;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/CadastroFinanceiro")
+@RequestMapping("/cadastroFinanceiro")
 public class FinanceiroCadastroController {
 
     @Autowired
@@ -29,18 +26,15 @@ public class FinanceiroCadastroController {
     }
 
     @GetMapping
-    public String showFinanceiroForm(Model model) {
-        return "cadastroFinanceiro";
-    }
+    public String cadastroFinanceiro(Model model) {return "cadastroFinanceiro";}
 
     @PostMapping
-    public String registerFinanceiro(@ModelAttribute("Operacao") @Valid Financeiro financeiro,
-                                     BindingResult result){
+    public String cadastrarFinanceiro(@ModelAttribute("operacao") @Valid Financeiro financeiro,
+                                   BindingResult result){
 
         if (result.hasErrors()){
-            return "cadastroFinanceiro";
+            return "cadastroFinanceiro";//erro
         }
-
         financeiroRepository.save(financeiro);
         return "redirect:/cadastroFinanceiro?success";
     }

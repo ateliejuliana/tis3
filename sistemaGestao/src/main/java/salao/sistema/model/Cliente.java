@@ -1,5 +1,6 @@
 package salao.sistema.model;
 
+
 import javax.persistence.*;
 
 @Entity

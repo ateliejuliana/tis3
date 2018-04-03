@@ -19,6 +19,7 @@ public class ClienteCadastroController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
     @ModelAttribute("cliente")
     public Cliente cliente() {
         return new Cliente();
