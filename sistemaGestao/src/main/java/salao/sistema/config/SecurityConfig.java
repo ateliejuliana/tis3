@@ -21,9 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(
-                        "/registration",
                         "/cadastroCliente",
                         "/cadastroServico",
+                        "/cadastroUsuario",
                         "/js/**",
                         "/build/**",
                         "/images/**",

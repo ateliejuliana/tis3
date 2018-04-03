@@ -1,29 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login - Juliana Diniz</title>
-    <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="../static/js/login.js" th:href="@{/js/login.js}"></script>
-    <script src="../static/js/materialize.js" th:href="@{/js/materialize.js}"></script>
-    <script src="../static/js/materialize.min.js" th:href="@{/js/materialize.min.js}"></script>
+    <title>Ateliê Juliana Diniz</title>
 
+    <!-- Bootstrap -->
+    <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../static/vendors/font-awesome/css/font-awesome.min.css" th:href="@{/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../static/vendors/nprogress/nprogress.css" th:href="@{/vendors/nprogress/nprogress.css}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../static/vendors/animate.css/animate.min.css" th:href="@{/vendors/animate.css/animate.min.css}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../static/build/css/custom.min.css" th:href="@{/build/css/custom.min.css}" rel="stylesheet">
 </head>
 
-<body onload="paginaCarregada(); inicializa();">
-    </div>
-    <div id="mae">
-        <img src="../static/images/logomarca.png" th:src="@{/images/logomarca.png}" alt="">
-        <div id="fotoLogin">
+<body class="login">
+<div>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Invalid username or password.
+                    </div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">
+                        You have been logged out.
+                    </div>
+                </div>
+                <form th:action="@{/login}" method="post">
+                    <h1>Login Form</h1>
+                    <div>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" />
+                    </div>
+                    <div>
+                        <input type="password" id="Password" name="password" class="form-control" placeholder="Password" required="" />
+                    </div>
+                    <div>
+                        <input type="submit"
+                               name="login-submit"
+                               id="login-submit"
+                               class="btn btn-default submit"
+                               value="Log In"/>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">Registo(provisorio)
+                            <a href="/cadastroUsuario" class="to_register"> Criar Conta </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
+                    </div>
+                </form>
+            </section>
         </div>
-        <div id="input_email_senha">
-            <input type="text" name="email" placeholder="E-mail ou usuário" id="digite_email" data-required="required" value=""><br>
-            <input type="password" style="display: none;" name="determine_email" placeholder="Senha" id="digite_senha" data-required="required" value=""><br>
-            <button id="botao_entrar">Avançar</button>
-        </div>
     </div>
-    <!-- jQuery -->
-    <script src="../static/vendors/jquery/dist/jquery.min.js" th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
+</div>
 </body>
 </html>

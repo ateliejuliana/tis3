@@ -15,7 +15,7 @@ import salao.sistema.web.dto.UsuarioCadastroDto;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("/cadastroUsuario")
 public class UsuarioCadastroController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class UsuarioCadastroController {
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        return "registration";
+        return "cadastroUsuario";
     }
 
     @PostMapping
@@ -41,11 +41,11 @@ public class UsuarioCadastroController {
         }
 
         if (result.hasErrors()){
-            return "registration";
+            return "cadastroUsuario";
         }
 
         usuarioService.save(usuarioDto);
-        return "redirect:/registration?success";
+        return "redirect:/cadastroUsuario?success";
     }
 
 }
