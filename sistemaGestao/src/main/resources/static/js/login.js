@@ -2,6 +2,7 @@ function paginaCarregada() {
 
     var email = "fabio";
     var senha = "123";
+
     //animação
     $("#mae").slideDown(1200);
     //verifica se o email digitado existe no banco de dados
