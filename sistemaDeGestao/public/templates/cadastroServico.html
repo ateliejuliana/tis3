@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ateliê Juliana Diniz</title>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script>
+  <script type="application/javascript">
+        $(document).ready(function () {
+                var database = firebase.database();
+                firebase.database().ref('/servicos').once('value').then(function(callback) {
+                  var servicos = callback.val();    
+                  for(var key in servicos){
+                      var nomeServico = servicos[key].nomeServico;
+                      var categoria   = servicos[key].categoria;
+                      var descricao   = servicos[key].descricao;
+                      $("#servicos").append("<div class='col-md-6 col-xs-12'> <div class='x_panel'> <div class='x_title'> <h2>Serviço</h2> <div class='clearfix'></div> </div> <div class='x_content'> <br/> <form class='form-horizontal form-label-left input_mask'> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Nome</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + nomeServico + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Categoria</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + categoria + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Descrição</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + descricao + "'> </div> </div> </form> </div> </div> </div>");            
+                  }  
+                });              
+        });
+  </script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
+  <script>
+      // Initialize Firebase
+      var config = {
+            apiKey: "AIzaSyC7G-udV94B1XUYqx74WRiCoDi6fe4CyzI",
+            authDomain: "ateliejulianadiniz.firebaseapp.com",
+            databaseURL: "https://ateliejulianadiniz.firebaseio.com",
+            projectId: "ateliejulianadiniz",
+            storageBucket: "ateliejulianadiniz.appspot.com",
+            messagingSenderId: "1034044995111"
+        };
+        firebase.initializeApp(config);
+  </script>
+
+  <!-- Bootstrap -->
+  <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../static/vendors/font-awesome/css/font-awesome.min.css" th:href="@{/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../static/vendors/nprogress/nprogress.css" th:href="@{/vendors/nprogress/nprogress.css}" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="../static/vendors/iCheck/skins/flat/green.css" th:href="@{/vendors/iCheck/skins/flat/green.css}" rel="stylesheet">
+  <!-- bootstrap-wysiwyg -->
+  <link href="../static/vendors/google-code-prettify/bin/prettify.min.css" th:href="@{/vendors/google-code-prettify/bin/prettify.min.css}" rel="stylesheet">
+  <!-- Select2 -->
+  <link href="../static/vendors/select2/dist/css/select2.min.css" th:href="@{/vendors/select2/dist/css/select2.min.css}" rel="stylesheet">
+  <!-- Switchery -->
+  <link href="../static/vendors/switchery/dist/switchery.min.css" th:href="@{/vendors/switchery/dist/switchery.min.css}" rel="stylesheet">
+  <!-- starrr -->
+  <link href="../static/vendors/starrr/dist/starrr.css" th:href="@{/vendors/starrr/dist/starrr.css}" rel="stylesheet">
+  <!-- bootstrap-daterangepicker -->
+  <link href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" th:href="@{/vendors/bootstrap-daterangepicker/daterangepicker.css}" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../static/build/css/custom.min.css" th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a href="/" class="site_title"> <span>Ateliê Juliana Diniz</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+        <div class="profile clearfix">
+          <div class="profile_pic">
+            <img src="../static/images/perfil.png" th:src="@{/images/perfil.png}" alt="..." class="img-circle profile_img">
+          </div>
+          <div class="profile_info">
+            <span >userType</span>
+            <h2>Username</h2>
+          </div>
+        </div>
+        <!-- /menu profile quick info -->
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu">
+              <li><a href="/"><i class="fa fa-home"></i> Home <span class="fa"></span></a>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Cliente <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="cadastroCliente">Cadastro</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Serviço <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="cadastroServico">Cadastro</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="cadastroFinanceiro">Cadastro</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Funcionário <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="cadastroFuncionario">Cadastro</a></li>
+                </ul>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="event.target.webkitRequestFullScreen()">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true" ></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
+                <img src="../static/images/perfil.png" th:src="@{/images/perfil.png}" alt="">
+                <span class=" fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-usermenu pull-right">
+                <li><a href="javascript:;"> Profile</a></li>
+                <li>
+                  <a href="javascript:;">
+                    <span>Configurações</span>
+                  </a>
+                </li>
+                <li><a href="logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3>Serviços</h3>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Cadastro de Serviços<small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div id = "cadastro" class="x_content">
+                    <br/>
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Nome do serviço<span>*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="nomeServico" type="text" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="categoria">Categoria *</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="categoria" class="form-control">
+                              <option value=""></option>
+                              <option value="cabelo">Cabelo</option>
+                              <option value="Pele">Pele</option>
+                              <option value="unha">Unha</option>
+                            </select>
+                          </div>
+                      </div>   
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="descricao" type="text" class="form-control" placeholder="Opcional">
+                        </div>
+                      </div>   
+                    </form>
+                    <br/>
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                      <button id="cancelar" type="button" class="btn btn-primary">Cancelar</button> 
+                      <button id="concluir" type="submit" class="btn btn-success">Concluir</button>    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div id = "servicos" class="row">
+             
+          </div>
+      </div>
+    </div>
+    <footer>
+      <div class="pull-right">
+        TIS III by <a href="">Grupo</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+   </div>
+</div>
+    
+ <script type="text/javascript">
+
+      $("#concluir").click(function salvaServicos(){ 
+         var nome = document.getElementById("nomeServico").value;
+         var categoria = document.getElementById("categoria").value;
+         var descricao = document.getElementById("descricao").value;
+         var database = firebase.database();  
+         firebase.database().ref('servicos/').push().set({
+             categoria: categoria,
+             descricao: descricao,
+             nomeServico: nome
+         });    
+          limpaCampos();
+          alert("Cadastrado com sucesso.");
+      });
+
+     $("#cancelar").click(function cancelar(){
+         limpaCampos();
+     });
+     
+      function limpaCampos(){
+         document.getElementById("nomeServico").value = "";
+         document.getElementById("categoria").value   = "";
+         document.getElementById("descricao").value   ="";
+      }
+     
+</script>
+
+
+<!-- jQuery -->
+<script src="../static/vendors/jquery/dist/jquery.min.js" th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script src="../static/vendors/bootstrap/dist/js/bootstrap.min.js" th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- FastClick -->
+<script src="../static/vendors/fastclick/lib/fastclick.js" th:src="@{/vendors/fastclick/lib/fastclick.js}"></script>
+<!-- NProgress -->
+<script src="../static/vendors/nprogress/nprogress.js" th:src="@{/vendors/nprogress/nprogress.js}"></script>
+<!-- bootstrap-progressbar -->
+<script src="../static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" th:src="@{/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
+<!-- iCheck -->
+<script src="../static/vendors/iCheck/icheck.min.js" th:src="@{vendors/iCheck/icheck.min.js}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="../static/vendors/moment/min/moment.min.js" th:src="@{/vendors/moment/min/moment.min.js}"></script>
+<script src="../static/vendors/bootstrap-daterangepicker/daterangepicker.js" th:src="@{/vendors/bootstrap-daterangepicker/daterangepicker.js}"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="../static/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js" th:src="@{/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js}"></script>
+<script src="../static/vendors/jquery.hotkeys/jquery.hotkeys.js" th:src="@{/vendors/jquery.hotkeys/jquery.hotkeys.js}"></script>
+<script src="../static/vendors/google-code-prettify/src/prettify.js" th:src="@{/vendors/google-code-prettify/src/prettify.js}"></script>
+<!-- jQuery Tags Input -->
+<script src="../static/vendors/jquery.tagsinput/src/jquery.tagsinput.js" th:src="@{/vendors/jquery.tagsinput/src/jquery.tagsinput.js}"></script>
+<!-- Switchery -->
+<script src="../static/vendors/switchery/dist/switchery.min.js" th:src="@{/vendors/switchery/dist/switchery.min.js}"></script>
+<!-- Select2 -->
+<script src="../static/vendors/select2/dist/js/select2.full.min.js" th:src="@{/vendors/select2/dist/js/select2.full.min.js}"></script>
+<!-- Parsley -->
+<script src="../static/vendors/parsleyjs/dist/parsley.min.js" th:src="@{/vendors/parsleyjs/dist/parsley.min.js}"></script>
+<!-- Autosize -->
+<script src="../static/vendors/autosize/dist/autosize.min.js" th:src="@{/vendors/autosize/dist/autosize.min.js}"></script>
+<!-- jQuery autocomplete -->
+<script src="../static/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js" th:src="@{/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js}"></script>
+<!-- starrr -->
+<script src="../static/vendors/starrr/dist/starrr.js" th:src="@{/vendors/starrr/dist/starrr.js}"></script>
+<!-- Custom Theme Scripts -->
+<script src="../static/build/js/custom.min.js" th:src="@{/build/js/custom.min.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+   body {
+       background-image: url("../images/background-loira.jpg");
+       background-size: cover;
+       @import url('https://fonts.googleapis.com/css?family=Montserrat');
+   }
+
+   #img_blur {
+       width: 100%;
+       height: 100%;
+       margin: 0px;
+       padding: 0px;
+       opacity: 0.1;
+       top: 0px;
+       transition: 2s;
+       left: 0px;
+       display: block;
+       position: absolute;
+   }
+
+   .img_blur_op {
+       opacity: 0.9 !important;
+   }
+
+   div#mae {
+       width: 480px;
+       height: 260px;
+       display: none;
+       box-sizing: border-box;
+       padding: 30px;
+       position: absolute;
+       top: 50%;
+       background-color: rgba(0, 0, 0, .2);
+       left: 50%;
+       margin-top: -150px;
+       margin-left: -240px;
+       border-radius: 20px;
+       border: 1px solid rgba(26, 187, 156, .1)
+   }
+
+   div#input_email_senha {
+       width: 80%;
+       color: aqua;
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+   div#fotoLogin {
+       display: inline-block;
+       width: 90px;
+       height: 90px;
+       border-radius: 100%;
+       overflow: hidden;
+       background-image: url(../images/usuariodeslogado.png);
+       background-position: center;
+       background-size: contain;
+       margin-left: auto;
+       margin-right: auto;
+       cursor: pointer;
+       margin-top: 6px;
+   }
+
+
+   div#fotoLogin:hover {
+       box-shadow: 0px 1px 1px 4px rgba(26, 187, 156, .3);
+   }
+
+   input:-webkit-autofill {
+       -webkit-box-shadow: 0 0 0 30px white inset;
+   }
+
+   /* Cor do texto do autocomplete */
+
+   input:-webkit-autofill {
+       -webkit-text-fill-color: black !important;
+   }
+
+   input {
+       width: 60%;
+       float: right;
+       position: relative;
+       margin-top: 8px;
+       padding: 10px 13px 10px 13px;
+       border-radius: 4px;
+       outline: none;
+       border: none;
+       font-size: 15px;
+       font-family: Arial, sans-serif;
+       transition: 1s;
+       background-color: rgba(1, 1, 1, .1);
+       color: cadetblue;
+       text-align: center;
+       display: inline-block;
+
+   }
+
+   #digite_senha {
+       top: -50px;
+   }
+
+   img {
+       width: 400px;
+       position: relative;
+       left: 10px;
+       margin-bottom: 20px;
+   }
+
+   h1 {
+       color: white;
+       font-family: serif;
+       font-size: 20px;
+   }
+
+   h2 {
+       color: black;
+       position: relative!important;
+       border-radius: 4px;
+       text-align: center;
+       font-size: 20px;
+       color: rgba(250, 250, 250, .8);
+       background-color: rgba(250, 250, 250, .1);
+       padding: 5px;
+       font-family: Montserrat;
+   }
+
+   div#log {
+       position: relative;
+       margin-top: 300px;
+       text-align: center;
+
+   }

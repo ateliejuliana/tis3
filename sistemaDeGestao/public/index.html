@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Juliana Diniz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <link rel="stylesheet" href="static/css/login.css">
+    <script src="static/js/login.js"></script>
+    <script src="static/js/materialize.js"></script>
+    <script src="static/js/materialize.min.js"></script>
+
+</head>
+
+<body onload="paginaCarregada();">
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyC7G-udV94B1XUYqx74WRiCoDi6fe4CyzI",
+            authDomain: "ateliejulianadiniz.firebaseapp.com",
+            databaseURL: "https://ateliejulianadiniz.firebaseio.com",
+            projectId: "ateliejulianadiniz",
+            storageBucket: "ateliejulianadiniz.appspot.com",
+            messagingSenderId: "1034044995111"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <div>
+        <img id="img_blur" src="static/images/blur-black.jpg" alt="">
+    </div>
+    <div id="mae">
+        <img src="static/images/logomarca.png" alt="">
+
+        <div id="input_email_senha">
+            <div id="fotoLogin">
+            </div>
+            <input type="text" spellcheck="false" name="email" placeholder="E-mail" id="digite_email" data-required="required" value=""><br>
+            <input type="password" name="determine_email" placeholder="Senha" id="digite_senha" data-required="required" value=""><br>
+          
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="static/vendors/jquery/dist/jquery.min.js"></script>
+</body>
+
+</html>
