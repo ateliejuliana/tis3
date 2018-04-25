@@ -2,6 +2,7 @@
    body {
        background-image: url("../images/background-loira.jpg");
        background-size: cover;
+       background-repeat: repeat;
        @import url('https://fonts.googleapis.com/css?family=Montserrat');
    }
 
@@ -21,6 +22,21 @@
    .img_blur_op {
        opacity: 0.9 !important;
    }
+
+   p#notificacao {
+
+       color: rgba(93,153,160,.6);
+       padding: 3px 10px;
+       position: absolute;
+       display: none;
+        left: 30px;
+       top: 250px;
+       text-align: center;
+       transition: 1s;
+       width: 400px;
+   }
+
+
 
    div#mae {
        width: 480px;
@@ -47,6 +63,7 @@
 
    div#fotoLogin {
        display: inline-block;
+       transition: 1s;
        width: 90px;
        height: 90px;
        border-radius: 100%;

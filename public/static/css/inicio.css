@@ -1,0 +1,12 @@
+/*Estilo do Header*/
+
+img#logomarca{
+    position: relative;
+    display: block;
+    overflow: visible;
+    width: 100%;
+    left: -5px;
+    top: 15px;
+}
+
+/*Estilo do Corpo*/
