@@ -29,11 +29,12 @@ function carregar() {
     
 
     $("#inicio").click(function () {
-        mostrarDivFlutuante("inicioConteudo.html");
+        $("#conteudo").load("inicioConteudo.html")
     });
     //Carregando a Agenda 
     $("#agenda").click(function () {
-        mostrarDivFlutuante("agenda.html");
+        alert("cheguei");
+        $("#conteudo").load("/public/static/production/agenda.html");
     });
     //Carregando Tela de Cadatro de Cliente
     $("#cadastroCliente").click(function () {
