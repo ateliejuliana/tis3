@@ -20,9 +20,7 @@ $("#cancelar").click(function cancelar() {
 });
 
 function excluir(id) {
-    var database = firebase.database();
     firebase.database().ref('financeiro/' + id).remove().then(function () {
-        $('#datatable-checkbox').html("");
         listar();
     });
 }
@@ -33,7 +31,7 @@ function limpaCampos() {
     $('#valor').val("");
 }
 function listar() {
-    var database = firebase.database();
+    $("#datatable-checkbox").html("");
     firebase.database().ref('/financeiro').once('value').then(function (callback) {
         var financeiro = callback.val();
         for (var key in financeiro) {
@@ -58,6 +56,5 @@ function cadastrar() {
         valor: Valor
     });
     limpaCampos();
-    $("#datatable-checkbox").html("");
     listar();
 }

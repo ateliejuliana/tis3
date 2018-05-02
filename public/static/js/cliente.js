@@ -20,9 +20,7 @@ function limparMensagens() {
 }
 
 function excluir(id) {
-    var database = firebase.database();
     firebase.database().ref('clientes/' + id).remove().then(function () {
-        $('#datatable-checkbox').html("");
         listar();
     });
 }
@@ -32,8 +30,9 @@ function limpaCampos() {
     $('#sobrenome').val("");
     $('#telefone').val("");
 }
+
 function listar() {
-    var database = firebase.database();
+    $("#datatable-checkbox").html("");
     firebase.database().ref('/clientes').once('value').then(function (callback) {
         var clientes = callback.val();
         for (var key in clientes) {
@@ -57,7 +56,6 @@ function cadastrar() {
         telefone: Telefone
     });
     limpaCampos();
-    $("#datatable-checkbox").html("");
     listar();
 }
 

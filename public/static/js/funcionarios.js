@@ -20,9 +20,7 @@ $("#cancelar").click(function cancelar() {
 });
 
 function excluir(id) {
-    var database = firebase.database();
     firebase.database().ref('funcionarios/' + id).remove().then(function () {
-        $('#datatable-checkbox').html("");
         listar();
     });
 }
@@ -45,7 +43,7 @@ function limpaCampos() {
     $('#confirmaSenha').val("");
 }
 function listar() {
-    var database = firebase.database();
+    $("#datatable-checkbox").html("");
     firebase.database().ref('/funcionarios').once('value').then(function (callback) {
         var funcionarios = callback.val();
         for (var key in funcionarios) {
@@ -83,7 +81,6 @@ function cadastrar() {
         senha: Senha
     });
     limpaCampos();
-    $("#datatable-checkbox").html("");
     listar();
 }
 

@@ -14,9 +14,7 @@ $("#cancelar").click(function cancelar() {
 });
 
 function excluir(id) {
-    var database = firebase.database();
     firebase.database().ref('fornecedores/' + id).remove().then(function () {
-        $('#datatable-checkbox').html("");
         listar();
     });
 }
@@ -40,7 +38,7 @@ function limpaCampos() {
     $('#tipo').val("");
 }
 function listar() {
-    var database = firebase.database();
+    $("#datatable-checkbox").html("");
     firebase.database().ref('/fornecedores').once('value').then(function (callback) {
         var fornecedores = callback.val();
         for (var key in fornecedores) {
@@ -79,7 +77,6 @@ function cadastrar() {
         tipo: Tipo
     });
     limpaCampos();
-    $("#datatable-checkbox").html("");
     listar();
 }
 

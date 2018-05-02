@@ -20,9 +20,7 @@ function limparMensagens() {
 }
 
 function excluir(id) {
-    var database = firebase.database();
     firebase.database().ref('produtos/' + id).remove().then(function () {
-        $('#datatable-checkbox').html("");
         listar();
     });
 }
@@ -35,7 +33,7 @@ function limpaCampos() {
     $('#descricao').val("");
 }
 function listar() {
-    var database = firebase.database();
+    $("#datatable-checkbox").html("");
     firebase.database().ref('/produtos').once('value').then(function (callback) {
         var produtos = callback.val();
         for (var key in produtos) {
@@ -65,7 +63,6 @@ function cadastrar() {
         descricao: Descricao
     });
     limpaCampos();
-    $("#datatable-checkbox").html("");
     listar();
 }
 

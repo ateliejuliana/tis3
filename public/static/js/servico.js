@@ -25,7 +25,7 @@ function limpaCampos() {
     $("#descricao").val("");
 }
 function listar() {
-    var database = firebase.database();
+    $("#datatable-checkbox").html("");
     firebase.database().ref('/servicos').once('value').then(function (callback) {
         var servicos = callback.val();
         for (var key in servicos) {
@@ -40,7 +40,6 @@ function listar() {
 listar();
 
 function excluir(id) {
-    var database = firebase.database();
     firebase.database().ref('servicos/' + id).remove().then(function () {
         $('#datatable-checkbox').html("");
         listar();
@@ -59,7 +58,6 @@ function cadastrar() {
         nomeServico: nome
     });
     limpaCampos();
-    $("#datatable-checkbox").html("");
     listar();
 }
 
