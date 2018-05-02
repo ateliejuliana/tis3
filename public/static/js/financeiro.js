@@ -19,6 +19,14 @@ $("#cancelar").click(function cancelar() {
     limpaCampos();
 });
 
+function excluir(id) {
+    var database = firebase.database();
+    firebase.database().ref('financeiro/' + id).remove().then(function () {
+        $('#datatable-checkbox').html("");
+        listar();
+    });
+}
+
 function limpaCampos() {
     $('#tipo').val("");
     $('#descricao').val("");
@@ -32,7 +40,7 @@ function listar() {
             var tipo = financeiro[key].tipo;
             var descricao = financeiro[key].descricao;
             var valor = financeiro[key].valor;
-            $("#financeiro").append("<div class='col-md-6 col-xs-12'> <div class='x_panel'> <div class='x_title'> <h2>Operação</h2> <div class='clearfix'></div> </div> <div class='x_content'> <br/> <form class='form-horizontal form-label-left input_mask'> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Tipo</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + tipo + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Descrição</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + descricao + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Valor</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + valor + "'> </div> </div> </form> </div> </div> </div>");
+            $("#datatable-checkbox").append("<tr id = '" + key + "'><td>" + tipo + "</td><td>" + descricao + "</td><td>" + valor + "</td><td><button type='button' id = '" + key + "' onclick='excluir(this.id)' class='btn btn-primary'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button> <button type='button' id = '" + key + "' onclick='editar(this.id)'class='btn btn-primary'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></td></tr> ");
         }
     });
 }
@@ -50,6 +58,6 @@ function cadastrar() {
         valor: Valor
     });
     limpaCampos();
-    $("#financeiro").html("");
+    $("#datatable-checkbox").html("");
     listar();
 }

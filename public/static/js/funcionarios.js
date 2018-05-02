@@ -19,12 +19,18 @@ $("#cancelar").click(function cancelar() {
     limpaCampos();
 });
 
+function excluir(id) {
+    var database = firebase.database();
+    firebase.database().ref('funcionarios/' + id).remove().then(function () {
+        $('#datatable-checkbox').html("");
+        listar();
+    });
+}
+
 function limparMensagens() {
     $('.invalid').addClass('hidden');
     $('.sucess').addClass('hidden');
 }
-
-
 function limpaCampos() {
     $('#cpf').val("");
     $('#nome').val("");
@@ -35,22 +41,18 @@ function limpaCampos() {
     $('#telefone').val("");
     $('#email').val("");
     $('#senha').val("");
+    $('#confirmaEmail').val("");
+    $('#confirmaSenha').val("");
 }
 function listar() {
     var database = firebase.database();
-    firebase.database().ref('/funcionario').once('value').then(function (callback) {
+    firebase.database().ref('/funcionarios').once('value').then(function (callback) {
         var funcionarios = callback.val();
         for (var key in funcionarios) {
             var cpf = funcionarios[key].cpf;
             var nome = funcionarios[key].nome;
-            var sobrenome = funcionarios[key].sobrenome;
-            var cidade = funcionarios[key].cidade;
-            var endereco = funcionarios[key].endereco;
-            var numero = funcionarios[key].numero;
-            var telefone = funcionarios[key].telefone;
             var email = funcionarios[key].email;
-            var senha = funcionarios[key].senha;
-            $("#funcionarios").append("<div class='col-md-6 col-xs-12'> <div class='x_panel'> <div class='x_title'> <h2>Funcionario</h2> <div class='clearfix'></div> </div> <div class='x_content'> <br/> <form class='form-horizontal form-label-left input_mask'> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>CPF</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + cpf + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Nome</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + nome + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Sobrenome</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + sobrenome + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Cidade</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + cidade + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Endereço</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + endereco + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Numero</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + numero + "'> </div> </div><div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Telefone</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + telefone + "'> </div> </div><div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Email</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + email + "'> </div> </div> </form> </div> </div> </div>");
+            $("#datatable-checkbox").append("<tr id = '" + key + "'><td>" + cpf + "</td><td>" + nome + "</td><td>" + email + "</td><td><button type='button' id = '" + key + "' onclick='excluir(this.id)' class='btn btn-primary'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button> <button type='button' id = '" + key + "' onclick='editar(this.id)'class='btn btn-primary'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></td></tr> ");
         }
     });
 }
@@ -69,7 +71,7 @@ function cadastrar() {
     var Email = $('#email').val();
     var Senha = $('#senha').val();
 
-    firebase.database().ref('funcionario/').push().set({
+    firebase.database().ref('funcionarios/').push().set({
         cpf: Cpf,
         nome: Nome,
         sobrenome: Sobrenome,
@@ -81,7 +83,7 @@ function cadastrar() {
         senha: Senha
     });
     limpaCampos();
-    $("#funcionarios").html("");
+    $("#datatable-checkbox").html("");
     listar();
 }
 

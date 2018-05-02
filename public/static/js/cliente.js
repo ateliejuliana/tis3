@@ -19,6 +19,13 @@ function limparMensagens() {
     $('.sucess').addClass('hidden');
 }
 
+function excluir(id) {
+    var database = firebase.database();
+    firebase.database().ref('clientes/' + id).remove().then(function () {
+        $('#datatable-checkbox').html("");
+        listar();
+    });
+}
 
 function limpaCampos() {
     $('#nome').val("");
@@ -29,12 +36,11 @@ function listar() {
     var database = firebase.database();
     firebase.database().ref('/clientes').once('value').then(function (callback) {
         var clientes = callback.val();
-        debugger;
         for (var key in clientes) {
             var nome = clientes[key].nome;
             var sobrenome = clientes[key].sobrenome;
             var telefone = clientes[key].telefone;
-            $("#clientes").append("<div class='col-md-6 col-xs-12'> <div class='x_panel'> <div class='x_title'> <h2>Cliente</h2> <div class='clearfix'></div> </div> <div class='x_content'> <br/> <form class='form-horizontal form-label-left input_mask'> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Nome</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + nome + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Sobrenome</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + sobrenome + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Telefone</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + telefone + "'> </div> </div> </form> </div> </div> </div>");
+            $("#datatable-checkbox").append("<tr id = '" + key + "'><td>" + nome + "</td><td>" + sobrenome + "</td><td>" + telefone + "</td><td><button type='button' id = '" + key + "' onclick='excluir(this.id)' class='btn btn-primary'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button> <button type='button' id = '" + key + "' onclick='editar(this.id)'class='btn btn-primary'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></td></tr> ");
         }
     });
 }
@@ -51,7 +57,7 @@ function cadastrar() {
         telefone: Telefone
     });
     limpaCampos();
-    $("#clientes").html("");
+    $("#datatable-checkbox").html("");
     listar();
 }
 

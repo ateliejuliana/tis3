@@ -29,28 +29,37 @@ function listar() {
     firebase.database().ref('/servicos').once('value').then(function (callback) {
         var servicos = callback.val();
         for (var key in servicos) {
-            var nomeServico = servicos[key].nomeServico;
+            var nome = servicos[key].nomeServico;
             var categoria = servicos[key].categoria;
             var descricao = servicos[key].descricao;
-            $("#servicos").append("<div class='col-md-6 col-xs-12'> <div class='x_panel'> <div class='x_title'> <h2>Serviço</h2> <div class='clearfix'></div> </div> <div class='x_content'> <br/> <form class='form-horizontal form-label-left input_mask'> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Nome</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' disabled='disabled' placeholder='" + nomeServico + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Categoria</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + categoria + "'> </div> </div> <div class='form-group'> <label class='control-label col-md-3 col-sm-3 col-xs-12'>Descrição</label> <div class='col-md-9 col-sm-9 col-xs-12'> <input type='text' class='form-control' readonly='readonly' placeholder='" + descricao + "'> </div> </div> </form> </div> </div> </div>");
+            $("#datatable-checkbox").append("<tr id = '" + key + "'><td>" + nome + "</td><td>" + categoria + "</td><td>" + descricao + "</td><td><button type='button' id = '" + key + "' onclick='excluir(this.id)' class='btn btn-primary'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button> <button type='button' id = '" + key + "' onclick='editar(this.id)'class='btn btn-primary'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></td></tr> ");
         }
     });
 }
 
 listar();
 
+function excluir(id) {
+    var database = firebase.database();
+    firebase.database().ref('servicos/' + id).remove().then(function () {
+        $('#datatable-checkbox').html("");
+        listar();
+    });
+}
 
 function cadastrar() {
     var nome = $("#nomeServico").val();
     var categoria = $("#categoria").val();
-    var descricao = $("#descricao").val();
+    var descricao;
+    if (descricao == "") descricao = "Sem descrição";
+    else descricao = $("#descricao").val();
     firebase.database().ref('servicos/').push().set({
         categoria: categoria,
         descricao: descricao,
         nomeServico: nome
     });
     limpaCampos();
-    $("#servicos").html("");
+    $("#datatable-checkbox").html("");
     listar();
 }
 

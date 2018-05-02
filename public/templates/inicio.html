@@ -13,7 +13,7 @@
 
     <title>Ateliê Juliana Diniz</title>
     <!--Js padrao-->
-    
+
     <!-- Bootstrap -->
     <link href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -38,14 +38,15 @@
     <link href="../static/build/css/custom.min.css" rel="stylesheet">
 </head>
 
-<body class="nav-md"  onload="carregar();">
-	
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<body class="nav-md" onload="carregar();">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyC7G-udV94B1XUYqx74WRiCoDi6fe4CyzI",  
+            apiKey: "AIzaSyC7G-udV94B1XUYqx74WRiCoDi6fe4CyzI",
             authDomain: "ateliejulianadiniz.firebaseapp.com",
             databaseURL: "https://ateliejulianadiniz.firebaseio.com",
             projectId: "ateliejulianadiniz",
@@ -56,11 +57,15 @@
     </script>
     <div class="container body">
         <div class="main_container" id="sidebar">
-               <!--Inicio sidebar-->
+            <!--Inicio sidebar-->
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="/" class="site_title"> <span>  <img id="logomarca" src="/static/images/logomarca.png" alt=""></span></a>
+                        <a href="/" class="site_title">
+                            <span>
+                                <img id="logomarca" src="/static/images/logomarca.png" alt="">
+                            </span>
+                        </a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -68,7 +73,8 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img style="border: none; border-image: none; image-resolution: snap; outline: none;" src="/static/images/usuariodeslogado.png" id="imagemDePerfil" alt="..." class="img-circle profile_img">
+                            <img style="border: none; border-image: none; image-resolution: snap; outline: none;" src="/static/images/usuariodeslogado.png"
+                                id="imagemDePerfil" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Bem vindo,</span>
@@ -84,27 +90,78 @@
                         <div class="menu_section">
                             <h3>Menu</h3>
                             <ul class="nav side-menu">
-                                <li><a id="inicio"><i class="fa fa-home"></i> Home <span class="fa"></span></a>
+                                <li>
+                                    <a id="inicio">
+                                        <i class="fa fa-home"></i> Home
+                                        <span class="fa"></span>
+                                    </a>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> Cliente <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i> Cliente
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
                                     <ul class="nav child_menu">
-                                        <li><a id="cadastroCliente">Cadastro</a></li>
+                                        <li>
+                                            <a id="cadastroCliente">Cadastro</a>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> Serviço <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i> Serviço
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
                                     <ul class="nav child_menu">
-                                        <li><a id="cadastroServico">Cadastro</a></li>
+                                        <li>
+                                            <a id="cadastroServico">Cadastro</a>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i> Financeiro
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
                                     <ul class="nav child_menu">
-                                        <li><a id="cadastroFinanceiro">Cadastro</a></li>
+                                        <li>
+                                            <a id="cadastroFinanceiro">Cadastro</a>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><a><i class="fa fa-edit"></i> Funcionário <span class="fa fa-chevron-down"></span></a>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i> Funcionário
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
                                     <ul class="nav child_menu">
-                                        <li><a id="cadastroFuncionario">Cadastro</a></li>
+                                        <li>
+                                            <a id="cadastroFuncionario">Cadastro</a>
+                                        </li>
                                     </ul>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i> Produtos
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a id="cadastroProduto">Cadastro</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i> Forncedores
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a id="cadastroFornecedor">Cadastro</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -113,17 +170,17 @@
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
                         <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
                         <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="event.target.webkitRequestFullScreen()">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true" ></span>
-                    </a>
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
                         <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
                         <a data-toggle="tooltip" onclick="sair();" data-placement="top" title="Logout" href="logout">
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                    </a>
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
                     </div>
                     <!-- /menu footer buttons -->
                 </div>
@@ -135,38 +192,45 @@
                 <div class="nav_menu">
                     <nav>
                         <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            <a id="menu_toggle">
+                                <i class="fa fa-bars"></i>
+                            </a>
                         </div>
 
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/static/images/usuariodeslogado.png" id="iconDePerfil" alt="">
-                                <span class=" fa fa-angle-down"></span>
-                            </a>
+                                    <img src="/static/images/usuariodeslogado.png" id="iconDePerfil" alt="">
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="javascript:;"> Profile</a></li>
+                                    <li>
+                                        <a href="javascript:;"> Profile</a>
+                                    </li>
                                     <li>
                                         <a href="javascript:;">
-                                        <span>Configurações</span>
-                                    </a>
+                                            <span>Configurações</span>
+                                        </a>
                                     </li>
-                                    <li><a onclick="sair();"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    <li>
+                                        <a onclick="sair();">
+                                            <i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
-      
+
             <!-- /top navigation -->
 
             <!-- page content -->
             <div class="right_col" id="conteudo" role="main" style="min-height: 707px;">
-              
-                            <!--SEMPRE ATUALIZAR O ARQUIVO: incioConteudo COM A DIV ABAIXO-->
-               
-          
+
+                <!--SEMPRE ATUALIZAR O ARQUIVO: incioConteudo COM A DIV ABAIXO-->
+
+
                 <div class="">
                     <div class="clearfix"></div>
 
@@ -177,18 +241,28 @@
                                 <div class="x_title">
                                     <h2>Início</h2>
                                     <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        <li>
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                                <i class="fa fa-wrench"></i>
+                                            </a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
+                                                <li>
+                                                    <a href="#">Settings 1</a>
                                                 </li>
-                                                <li><a href="#">Settings 2</a>
+                                                <li>
+                                                    <a href="#">Settings 2</a>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        <li>
+                                            <a class="close-link">
+                                                <i class="fa fa-close"></i>
+                                            </a>
                                         </li>
                                     </ul>
                                     <div class="clearfix"></div>
@@ -199,18 +273,19 @@
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <!--FIM DA DIV: inicioConteudo-->
 
-                
+
             </div>
             <!-- /page content -->
 
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    TIS III by <a href="">Grupo</a>
+                    TIS III by
+                    <a href="">Grupo</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>
@@ -218,7 +293,7 @@
         </div>
     </div>
     <script src="/static/js/funcionarios.js">    </script>
-    <script src="/static/js/inicio.js" ></script>
+    <script src="/static/js/inicio.js"></script>
     <!-- jQuery -->
     <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
