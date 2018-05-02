@@ -3,10 +3,10 @@ $("#concluir").click(function salvaFuncionario() {
     if ($('#cpf').val() == "" || $('#nome').val() == "" || $('#email').val() == "" || $('#senha').val() == "") {
         $('.invalid').removeClass('hidden');
     }
-    if ($('#email').val() != $('#confirmaEmail').val()) {
+    else if ($('#email').val() != $('#confirmaEmail').val()) {
         $('.invalid').removeClass('hidden');
     }
-    if ($('#senha').val() != $('#confirmaSenha').val()) {
+    else if ($('#senha').val() != $('#confirmaSenha').val()) {
         $('.invalid').removeClass('hidden');
     } else {
         cadastrar();
@@ -43,7 +43,7 @@ function listar() {
         for (var key in funcionarios) {
             var cpf = funcionarios[key].cpf;
             var nome = funcionarios[key].nome;
-            var sobrenome = funcionarios[key].spbrenome;
+            var sobrenome = funcionarios[key].sobrenome;
             var cidade = funcionarios[key].cidade;
             var endereco = funcionarios[key].endereco;
             var numero = funcionarios[key].numero;
