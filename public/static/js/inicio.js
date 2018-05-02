@@ -11,7 +11,8 @@ function carregar() {
             var providerData = user.providerData;
 
             //mudando dados da pagina de acordo com o usuário
-            document.getElementById("imagem	DePerfil").src = photoUrl;
+            console.log(displayName);
+            document.getElementById("imagemDePerfil").src = photoUrl;
             document.getElementById("iconDePerfil").src = photoUrl;
             document.getElementById("nomeUsuario").innerHTML = displayName;
         } else {
@@ -23,32 +24,47 @@ function carregar() {
     //AJAX
 
     //Carregando Tela de Inicio
+    /*    $("#inicio").click(function () {
+            $("#conteudo").load("inicioConteudo.html");
+        });*/
+
+    function mostrarDivFlutuante(conteudo) {
+        $("#divFlutuante").show(300);
+        $("#conteudoFlutuante").load(conteudo);
+    }
+    
+
     $("#inicio").click(function () {
-        $("#conteudo").load("inicioConteudo.html");
+        
     });
     //Carregando Tela de Cadatro de Cliente
     $("#cadastroCliente").click(function () {
-        $("#conteudo").load("cadastroCliente.html");
+        mostrarDivFlutuante("cadastroCliente.html");
     });
     //Carregando Tela de Cadatro de Serviço
     $("#cadastroServico").click(function () {
-        $("#conteudo").load("cadastroServico.html");
+        mostrarDivFlutuante("cadastroServico.html");
     });
     //Carregando Tela de Cadatro de Financeiro
     $("#cadastroFinanceiro").click(function () {
-        $("#conteudo").load("cadastroFinanceiro.html");
+        mostrarDivFlutuante("cadastroFinanceiro.html");
     });
     //Carregando Tela de Cadastro de Funcionario
     $("#cadastroFuncionario").click(function () {
-        $("#conteudo").load("cadastroFuncionario.html");
+        mostrarDivFlutuante("cadastroFuncionario.html");
     });
     $("#cadastroProduto").click(function () {
-        $("#conteudo").load("cadastroProduto.html");
+        mostrarDivFlutuante("cadastroProduto.html");
     });
     $("#cadastroFornecedor").click(function () {
-        $("#conteudo").load("cadastroFornecedores.html");
+        mostrarDivFlutuante("cadastroFornecedores.html");
     });
 
+}
+
+function fecharDivFlutuante() {
+    $("#conteudoFlutuante").html("");
+    $("#divFlutuante").hide(300);
 }
 
 function sair() {

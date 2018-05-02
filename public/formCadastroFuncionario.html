@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+</head>
+
+<body style="overflow-x: hidden; height: auto;">
+   
+   <h2 style="color: cadetblue; font-size: 30px; margin-top: 1px; padding-left: 5px;">Cadastro de Funcionários</h2>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="nome" type="text" class="validate">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="sobrenome" type="text" class="validate">
+                    <label for="sobrenome">Sobrenome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="number" id="cpf" class="validate">
+                    <label for="cpf">CPF</label>
+                </div>
+                <div class="input-field col s6">
+         
+  <select style="cursor: pointer;" class="browser-default">
+    <option value="" disabled selected>Cargo</option>
+    <option value="1">Auxiliar de Cabeleleiro(a)</option>
+    <option value="2">Cabeleleiro(a)</option>
+    <option value="3">Gerente</option>
+    <option value="4">Manicure</option>
+    <option value="5">Maquiador(a)</option>
+    <option value="6">Faxineiro(a)</option>
+    <option value="7">Secretário(a)</option>
+  </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+                <div id="divSenha" class="input-field col s6">
+                    <input id="senha" type="password" class="validate">
+                    <label for="senha">Senha</label>
+                </div>
+            </div>
+            <p>
+                <label>
+        <input type="checkbox" id="checkBox" class="filled-in" onclick="mostrarCampoSenha();" />
+        <span>Criar conta de usuário</span>
+      </label>
+            </p>
+
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Carregar foto</span>
+                    <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Selecione a foto de perfil">
+                </div>
+            </div>
+            <button style="float: right;" class="btn">Cadastrar</button>
+            
+        </form>
+    </div>
+<script>  
+    
+      $(document).ready(function(){
+    $('select').formSelect();
+  });
+    
+    function mostrarCampoSenha(){
+
+    }
+    </script>
+</body>
+</html>
