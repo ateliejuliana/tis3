@@ -11,9 +11,7 @@ function carregar() {
             var providerData = user.providerData;
 
             //mudando dados da pagina de acordo com o usuário
-            document.getElementById("imagem	DePerfil").src = photoUrl;
-            document.getElementById("iconDePerfil").src = photoUrl;
-            document.getElementById("nomeUsuario").innerHTML = displayName;
+
         } else {
             console.log("Usuário deslogado!\n redirecionando para pagina de login...");
             window.location.href = "../index.html";
@@ -27,26 +25,26 @@ function carregar() {
         $("#conteudo").load("inicioConteudo.html");
     });
     //Carregando Tela de Cadatro de Cliente
-    $("#cadastroCliente").click(function () {
-        $("#conteudo").load("cadastroCliente.html");
+    $("#menuClientes").click(function () {
+        $("#conteudo").load("cliente.html");
     });
     //Carregando Tela de Cadatro de Serviço
-    $("#cadastroServico").click(function () {
-        $("#conteudo").load("cadastroServico.html");
+    $("#menuServicos").click(function () {
+        $("#conteudo").load("servico.html");
     });
     //Carregando Tela de Cadatro de Financeiro
-    $("#cadastroFinanceiro").click(function () {
-        $("#conteudo").load("cadastroFinanceiro.html");
+    $("#menuFinanceiro").click(function () {
+        $("#conteudo").load("financeiro.html");
     });
-    //Carregando Tela de Cadastro de Funcionario
-    $("#cadastroFuncionario").click(function () {
-        $("#conteudo").load("cadastroFuncionario.html");
+    //Carregando Tela de menu de Funcionario
+    $("#menuFuncionarios").click(function () {
+        $("#conteudo").load("funcionario.html");
     });
-    $("#cadastroProduto").click(function () {
-        $("#conteudo").load("cadastroProduto.html");
+    $("#menuProdutos").click(function () {
+        $("#conteudo").load("produto.html");
     });
-    $("#cadastroFornecedor").click(function () {
-        $("#conteudo").load("cadastroFornecedores.html");
+    $("#menuFornecedores").click(function () {
+        $("#conteudo").load("fornecedor.html");
     });
 
 }

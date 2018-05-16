@@ -1,31 +1,5 @@
-$("#concluir").click(function salvaServicos() {
-    limparMensagens();
-    if ($('#nomeServico').val() == "" || $('#categoria').val() == "" || $('#descricao').val() == "") {
-        $('.invalid').removeClass('hidden');
-    }
-    else {
-        cadastrar();
-        $('.sucess').removeClass('hidden');
-    }
-});
-
-$("#cancelar").click(function cancelar() {
-    limparMensagens();
-    limpaCampos();
-});
-
-function limparMensagens() {
-    $('.invalid').addClass('hidden');
-    $('.sucess').addClass('hidden');
-}
-
-function limpaCampos() {
-    $("#nomeServico").val("");
-    $("#categoria").val("");
-    $("#descricao").val("");
-}
 function listar() {
-    $("#datatable-checkbox").html("");
+    $("#datatable-checkbox").html('');
     firebase.database().ref('/servicos').once('value').then(function (callback) {
         var servicos = callback.val();
         for (var key in servicos) {
@@ -39,6 +13,17 @@ function listar() {
 
 listar();
 
+function editar(id){
+    $("#conteudo").load("cadastroServico.html");
+    $('#id').val(id);
+    firebase.database().ref('servicos/' + id).once('value').then(function(callback) {
+        var keys = callback.val();
+        $('#nome').val(keys.nome);
+        $('#categoria').val(keys.categoria);
+        $('#descricao').val(keys.descricao);            
+    });
+}
+
 function excluir(id) {
     firebase.database().ref('servicos/' + id).remove().then(function () {
         $('#datatable-checkbox').html("");
@@ -46,18 +31,7 @@ function excluir(id) {
     });
 }
 
-function cadastrar() {
-    var nome = $("#nomeServico").val();
-    var categoria = $("#categoria").val();
-    var descricao;
-    if (descricao == "") descricao = "Sem descrição";
-    else descricao = $("#descricao").val();
-    firebase.database().ref('servicos/').push().set({
-        categoria: categoria,
-        descricao: descricao,
-        nomeServico: nome
-    });
-    limpaCampos();
-    listar();
+function novo()
+{
+    $("#conteudo").load("cadastroServico.html");
 }
-

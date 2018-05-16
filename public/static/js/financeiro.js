@@ -1,37 +1,27 @@
-$("#concluir").click(function salvaOperacao() {
-    limparMensagens();
-    if ($('#tipo').val() == "" || $('#descricao').val() == "" || $('#valor').val() == "") {
-        $('.invalid').removeClass('hidden');
-    }
-    else {
-        cadastrar();
-        $('.sucess').removeClass('hidden');
-    }
-});
-
-function limparMensagens() {
-    $('.invalid').addClass('hidden');
-    $('.sucess').addClass('hidden');
-}
-
-$("#cancelar").click(function cancelar() {
-    limparMensagens();
-    limpaCampos();
-});
-
 function excluir(id) {
     firebase.database().ref('financeiro/' + id).remove().then(function () {
         listar();
     });
 }
 
-function limpaCampos() {
-    $('#tipo').val("");
-    $('#descricao').val("");
-    $('#valor').val("");
+function novo()
+{
+    $("#conteudo").load("cadastroFinanceiro.html");
 }
+
+function editar(id){
+    $("#conteudo").load("cadastroFinanceiro.html");
+    $('#id').val(id);
+    firebase.database().ref('financeiro/' + id).once('value').then(function(callback) {
+        var keys = callback.val();
+        $('#tipo').val(keys.tipo);
+        $('#descricao').val(keys.descricao);
+        $('#valor').val(keys.valor);            
+    });
+}
+
 function listar() {
-    $("#datatable-checkbox").html("");
+    $("#datatable-checkbox").html('');
     firebase.database().ref('/financeiro').once('value').then(function (callback) {
         var financeiro = callback.val();
         for (var key in financeiro) {
@@ -44,17 +34,3 @@ function listar() {
 }
 
 listar();
-
-
-function cadastrar() {
-    var Tipo = $('#tipo').val();
-    var Descricao = $('#descricao').val();
-    var Valor = $('#valor').val();
-    firebase.database().ref('financeiro/').push().set({
-        tipo: Tipo,
-        descricao: Descricao,
-        valor: Valor
-    });
-    limpaCampos();
-    listar();
-}

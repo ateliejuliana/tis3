@@ -33,16 +33,17 @@
     <!-- bootstrap-daterangepicker -->
     <link href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/inicio.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <!-- Custom Theme Style -->
     <link href="../static/build/css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md" onload="carregar();">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+   
+   
     <script>
         // Initialize Firebase
         var config = {
@@ -97,70 +98,40 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a>
-                                        <i class="fa fa-edit"></i> Cliente
-                                        <span class="fa fa-chevron-down"></span>
+                                    <a id="menuClientes">
+                                        <i  class="fa fa-edit"></i> Cliente
+                                        <span class="fa"></span>
                                     </a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a id="cadastroCliente">Cadastro</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li>
-                                    <a>
-                                        <i class="fa fa-edit"></i> Serviço
-                                        <span class="fa fa-chevron-down"></span>
+                                    <a id="menuServicos">
+                                        <i  class="fa fa-edit"></i> Serviço
+                                        <span class="fa"></span>
                                     </a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a id="cadastroServico">Cadastro</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li>
-                                    <a>
-                                        <i class="fa fa-edit"></i> Financeiro
-                                        <span class="fa fa-chevron-down"></span>
+                                    <a id="menuFinanceiro">
+                                        <i  class="fa fa-edit"></i> Financeiro
+                                        <span class="fa"></span>
                                     </a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a id="cadastroFinanceiro">Cadastro</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li>
-                                    <a>
-                                        <i class="fa fa-edit"></i> Funcionário
-                                        <span class="fa fa-chevron-down"></span>
+                                    <a id="menuFuncionarios">
+                                        <i  class="fa fa-edit"></i> Funcionário
+                                        <span class="fa"></span>
                                     </a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a id="cadastroFuncionario">Cadastro</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li>
-                                    <a>
-                                        <i class="fa fa-edit"></i> Produtos
-                                        <span class="fa fa-chevron-down"></span>
+                                    <a id="menuProdutos">
+                                        <i  class="fa fa-edit"></i> Produtos
+                                        <span class="fa"></span>
                                     </a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a id="cadastroProduto">Cadastro</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li>
-                                    <a>
+                                    <a id="menuFornecedores" >
                                         <i class="fa fa-edit"></i> Forncedores
-                                        <span class="fa fa-chevron-down"></span>
+                                        <span class="fa"></span>
                                     </a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a id="cadastroFornecedor">Cadastro</a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -292,8 +263,8 @@
             <!-- /footer content -->
         </div>
     </div>
-    <script src="/static/js/funcionarios.js">    </script>
-    <script src="/static/js/inicio.js"></script>
+    <script src="../static/js/funcionarios.js">    </script>
+    <script src="../static/js/inicio.js"></script>
     <!-- jQuery -->
     <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->

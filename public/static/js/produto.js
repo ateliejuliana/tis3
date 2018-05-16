@@ -1,23 +1,3 @@
-$("#concluir").click(function salvaCliente() {
-    limparMensagens();
-    if ($('#nome').val() == "" || $('#valor').val() == "" || $('#quantidade').val() == "") {
-        $('.invalid').removeClass('hidden');
-    }
-    else {
-        cadastrar();
-        $('.sucess').removeClass('hidden');
-    }
-});
-
-$("#cancelar").click(function cancelar() {
-    limparMensagens();
-    limpaCampos();
-});
-
-function limparMensagens() {
-    $('.invalid').addClass('hidden');
-    $('.sucess').addClass('hidden');
-}
 
 function excluir(id) {
     firebase.database().ref('produtos/' + id).remove().then(function () {
@@ -25,15 +5,26 @@ function excluir(id) {
     });
 }
 
-function limpaCampos() {
-    $('#nome').val("");
-    $('#quantidade').val("");
-    $('#tipo').val("");
-    $('#valor').val("");
-    $('#descricao').val("");
+function novo()
+{
+    $("#conteudo").load("cadastroProduto.html");
 }
+
+function editar(id){
+    $("#conteudo").load("cadastroProduto.html");
+    $('#id').val(id);
+    firebase.database().ref('produtos/' + id).once('value').then(function(callback) {
+        var keys = callback.val();
+        $('#nome').val(keys.nome);
+        $('#valor').val(keys.valor);
+        $('#tipo').val(keys.tipo); 
+        $('#quantidade').val(keys.quantidade); 
+        $('#descricao').val(keys.descricao);            
+    });
+}
+
 function listar() {
-    $("#datatable-checkbox").html("");
+    $("#datatable-checkbox").html('');
     firebase.database().ref('/produtos').once('value').then(function (callback) {
         var produtos = callback.val();
         for (var key in produtos) {
@@ -46,23 +37,3 @@ function listar() {
 }
 
 listar();
-
-function cadastrar() {
-    var Nome = $('#nome').val();
-    var Valor = $('#valor').val();
-    var Tipo = $('#tipo').val();
-    var Quantidade = $('#quantidade').val();
-    var Descricao;
-    if (Descricao == "") Descricao = "Sem descrição";
-    else Descricao = $("#descricao").val();
-    firebase.database().ref('produtos/').push().set({
-        nome: Nome,
-        valor: Valor,
-        tipo: Tipo,
-        quantidade: Quantidade,
-        descricao: Descricao
-    });
-    limpaCampos();
-    listar();
-}
-

@@ -1,44 +1,34 @@
-$("#concluir").click(function salvaFuncionario() {
-    limparMensagens();
-    if ($('#cnpj').val() == "" || $('#nome').val() == "" || $('#email').val() == "" || $('#cep').val() == "" || $('#tipo').val() == "") {
-        $('.invalid').removeClass('hidden');
-    } else {
-        cadastrar();
-        $('.sucess').removeClass('hidden');
-    }
-});
-
-$("#cancelar").click(function cancelar() {
-    limparMensagens();
-    limpaCampos();
-});
-
 function excluir(id) {
     firebase.database().ref('fornecedores/' + id).remove().then(function () {
         listar();
     });
 }
 
-function limparMensagens() {
-    $('.invalid').addClass('hidden');
-    $('.sucess').addClass('hidden');
+function novo() {
+    $("#conteudo").load("cadastroFornecedor.html");
+}
+
+function editar(id) {
+    $("#conteudo").load("cadastroFornecedor.html");
+    $('#id').val(id);
+    firebase.database().ref('fornecedores/' + id).once('value').then(function (callback) {
+        var keys = callback.val();
+        $('#cnpj').val(keys.cnpj);
+        $('#nome').val(keys.nome);
+        $('#cep').val(keys.cep);
+        $('#estado').val(keys.estado);
+        $('#cidade').val(keys.cidade);
+        $('#endereco').val(keys.endereco);
+        $('#numero').val(keys.numero);
+        $('#telefone').val(keys.telefone);
+        $('#email').val(keys.email);
+        $('#tipo').val(keys.tipo);
+    });
 }
 
 
-function limpaCampos() {
-    $('#cnpj').val("");
-    $('#nome').val("");
-    $('#cep').val("");
-    $('#estado').val("");
-    $('#cidade').val("");
-    $('#endereco').val("");
-    $('#numero').val("");
-    $('#telefone').val("");
-    $('#email').val("");
-    $('#tipo').val("");
-}
 function listar() {
-    $("#datatable-checkbox").html("");
+    $("#datatable-checkbox").html('');
     firebase.database().ref('/fornecedores').once('value').then(function (callback) {
         var fornecedores = callback.val();
         for (var key in fornecedores) {
@@ -51,33 +41,4 @@ function listar() {
 }
 
 listar();
-
-function cadastrar() {
-    var Cnpj = $('#cnpj').val();
-    var Nome = $('#nome').val();
-    var CEP = $('#cep').val();
-    var Estado = $('#estado').val();
-    var Cidade = $('#cidade').val();
-    var Endereco = $('#endereco').val();
-    var Numero = $('#numero').val();
-    var Telefone = $('#telefone').val();
-    var Email = $('#email').val();
-    var Tipo = $('#tipo').val();
-
-    firebase.database().ref('fornecedores/').push().set({
-        cnpj: Cnpj,
-        nome: Nome,
-        cep: CEP,
-        estado: Estado,
-        cidade: Cidade,
-        endereco: Endereco,
-        numero: Numero,
-        telefone: Telefone,
-        email: Email,
-        tipo: Tipo
-    });
-    limpaCampos();
-    listar();
-}
-
 

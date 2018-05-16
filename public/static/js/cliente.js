@@ -1,38 +1,27 @@
-$("#concluir").click(function salvaCliente() {
-    limparMensagens();
-    if ($('#nome').val() == "" || $('#sobrenome').val() == "" || $('#telefone').val() == "") {
-        $('.invalid').removeClass('hidden');
-    }
-    else {
-        cadastrar();
-        $('.sucess').removeClass('hidden');
-    }
-});
-
-$("#cancelar").click(function cancelar() {
-    limparMensagens();
-    limpaCampos();
-});
-
-function limparMensagens() {
-    $('.invalid').addClass('hidden');
-    $('.sucess').addClass('hidden');
-}
-
 function excluir(id) {
     firebase.database().ref('clientes/' + id).remove().then(function () {
         listar();
     });
 }
 
-function limpaCampos() {
-    $('#nome').val("");
-    $('#sobrenome').val("");
-    $('#telefone').val("");
+function novo()
+{
+    $("#conteudo").load("cadastroCliente.html");
+}
+
+function editar(id){
+    $("#conteudo").load("cadastroCliente.html");
+    $('#id').val(id);
+    firebase.database().ref('clientes/' + id).once('value').then(function(callback) {
+        var keys = callback.val();
+        $('#nome').val(keys.nome);
+        $('#sobrenome').val(keys.sobrenome);
+        $('#telefone').val(keys.telefone);            
+    });
 }
 
 function listar() {
-    $("#datatable-checkbox").html("");
+    $("#datatable-checkbox").html('');
     firebase.database().ref('/clientes').once('value').then(function (callback) {
         var clientes = callback.val();
         for (var key in clientes) {
@@ -46,16 +35,4 @@ function listar() {
 
 listar();
 
-function cadastrar() {
-    var Nome = $('#nome').val();
-    var Sobrenome = $('#sobrenome').val();
-    var Telefone = $('#telefone').val();
-    firebase.database().ref('clientes/').push().set({
-        nome: Nome,
-        sobrenome: Sobrenome,
-        telefone: Telefone
-    });
-    limpaCampos();
-    listar();
-}
 
