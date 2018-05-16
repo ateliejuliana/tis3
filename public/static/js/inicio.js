@@ -22,6 +22,12 @@ function carregar() {
     });
 
     //AJAX
+
+    //Carregando Tela de Inicio
+    /*    $("#inicio").click(function () {
+            $("#conteudo").load("inicioConteudo.html");
+        });*/
+
     function mostrarDivFlutuante(conteudo) {
         $("#divFlutuante").show(300);
         $("#conteudoFlutuante").load(conteudo);
@@ -29,11 +35,7 @@ function carregar() {
     
 
     $("#inicio").click(function () {
-        mostrarDivFlutuante("inicioConteudo.html");
-    });
-    //Carregando a Agenda 
-    $("#agenda").click(function () {
-        mostrarDivFlutuante("agenda.html");
+        
     });
     //Carregando Tela de Cadatro de Cliente
     $("#cadastroCliente").click(function () {
@@ -58,16 +60,6 @@ function carregar() {
         mostrarDivFlutuante("cadastroFornecedores.html");
     });
 
-    
-    
-    document.body.addEventListener('keyup', function(){
-       var key = event.keyCode;
-        if(key == 27 && $("#divFlutuante").is(':visible')) {
-            console.log("chegou dentro da condicao");
-           fecharDivFlutuante();
-        }
-    });
-    
 }
 
 function fecharDivFlutuante() {
