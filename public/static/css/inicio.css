@@ -10,35 +10,3 @@ img#logomarca{
 }
 
 /*Estilo do Corpo*/
-
-/*DIV FLUTUANTE*/
-#divFlutuante{
-    position: fixed;
-    z-index: 1;
-    display: none;
-    overflow: hidden;
-    background-color: white;
-    width: 700px;
-    height: 700px;
-    left: 50%;
-    top: 50%;
-    margin-left: -350px;
-    padding: 20px;
-    box-shadow: 1px 1px 2px 1px rgba(0,0,0,.2);
-    margin-top: -350px;
-    border-radius: 3px;
-    overflow: auto;
-}
-
-#divFlutuante object {
-    width: 100%;
-    height: 100%;
-}
-
-#divFlutuante button {
-    outline: none;
-    border: none;
-    background-color: none !important;
-    float: right;
-}
-/*FIM DA DIV FLUTUANTE*/

@@ -40,7 +40,8 @@
 
 <body class="nav-md" onload="carregar();">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -53,7 +54,6 @@
             messagingSenderId: "1034044995111"
         };
         firebase.initializeApp(config);
-
     </script>
     <div class="container body">
         <div class="main_container" id="sidebar">
@@ -73,7 +73,8 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img style="border: none; border-image: none; image-resolution: snap; outline: none;" src="/static/images/usuariodeslogado.png" id="imagemDePerfil" alt="..." class="img-circle profile_img">
+                            <img style="border: none; border-image: none; image-resolution: snap; outline: none;" src="/static/images/usuariodeslogado.png"
+                                id="imagemDePerfil" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Bem vindo,</span>
@@ -185,19 +186,7 @@
                 </div>
             </div>
             <!--Fim sidebar-->
-            <div id="divFlutuante">
 
-
-                <!--ESTRUTURA DA DIV FLUTUANTE-->
-                <div id="opcoesDoHeader">
-                    <button type="button" onclick="fecharDivFlutuante();" class="glyphicon glyphicon-remove"></button>
-                </div>
-                <div id="conteudoFlutuante">
-                    <!--CONTEUDO DA DIV FLUTUANTE-->
-                    <object data="../formCadastroFuncionario.html" type="text/html"></object>
-                </div>
-
-            </div>
             <!-- top navigation -->
             <div class="top_nav">
                 <div class="nav_menu">
@@ -303,10 +292,7 @@
             <!-- /footer content -->
         </div>
     </div>
-    <script src="/static/js/funcionarios.js">
-
-
-    </script>
+    <script src="/static/js/funcionarios.js">    </script>
     <script src="/static/js/inicio.js"></script>
     <!-- jQuery -->
     <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
