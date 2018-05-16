@@ -24,6 +24,10 @@ function carregar() {
     $("#inicio").click(function () {
         $("#conteudo").load("inicioConteudo.html");
     });
+    //Carregando Tela de Agenda
+    $("#agenda").click(function () {
+        $("#conteudo").load("agenda.html");
+    });
     //Carregando Tela de Cadatro de Cliente
     $("#menuClientes").click(function () {
         $("#conteudo").load("cliente.html");

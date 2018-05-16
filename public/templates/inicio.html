@@ -34,6 +34,9 @@
     <link href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/inicio.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- FullCalendar -->
+    <link href="../static/vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="../static/vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
 
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <!-- Custom Theme Style -->
@@ -64,7 +67,7 @@
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/" class="site_title">
                             <span>
-                                <img id="logomarca" src="/static/images/logomarca.png" alt="">
+                                <img id="logomarca" src="../static/images/logomarca.png" alt="">
                             </span>
                         </a>
                     </div>
@@ -74,7 +77,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img style="border: none; border-image: none; image-resolution: snap; outline: none;" src="/static/images/usuariodeslogado.png"
+                            <img style="border: none; border-image: none; image-resolution: snap; outline: none;" src="../static/images/usuariodeslogado.png"
                                 id="imagemDePerfil" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
@@ -94,6 +97,12 @@
                                 <li>
                                     <a id="inicio">
                                         <i class="fa fa-home"></i> Home
+                                        <span class="fa"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="agenda">
+                                        <i class="fa fa-calendar"></i> Agenda
                                         <span class="fa"></span>
                                     </a>
                                 </li>
@@ -171,7 +180,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="/static/images/usuariodeslogado.png" id="iconDePerfil" alt="">
+                                    <img src="../static/images/usuariodeslogado.png" id="iconDePerfil" alt="">
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -263,7 +272,6 @@
             <!-- /footer content -->
         </div>
     </div>
-    <script src="../static/js/funcionarios.js">    </script>
     <script src="../static/js/inicio.js"></script>
     <!-- jQuery -->
     <script src="../static/vendors/jquery/dist/jquery.min.js"></script>
@@ -299,7 +307,7 @@
     <!-- starrr -->
     <script src="../static/vendors/starrr/dist/starrr.js"></script>
     <!-- Custom Theme Scripts -->
-    <script src="../static/build/js/custom.min.js"></script>
+    <script src="../static/build/js/custom.js"></script>
 
 </body>
 
