@@ -71,13 +71,15 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">Cliente</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="title" name="title">
+                  <select id="selectcliente" type="text" form="antoform">
+                    </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">Serviço</label>
               <div class="col-sm-9">
-                <textarea class="form-control" style="height:55px;" id="descr" name="descr"></textarea>
+                  <select id="selectservico" form="antoform">
+                    </select>
               </div>
             </div>
           </form>
@@ -105,13 +107,15 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">Cliente</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="title2" name="title2">
-              </div>
+                <select id="select-cliente" form="antoform2">
+                </select>
+               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">Serviço</label>
               <div class="col-sm-9">
-                <textarea class="form-control" style="height:55px;" id="descr2" name="descr"></textarea>
+                  <select id="select-servico" form="antoform2">
+                    </select>
               </div>
             </div>
 
@@ -130,7 +134,7 @@
 <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
 <!-- /calendar modal -->
 <!-- FullCalendar -->
-
+<script src="../static/js/agenda.js"></script>
 <script src="../static/vendors/moment/min/moment.min.js"></script>
 <script src="../static/vendors/fullcalendar/dist/fullcalendar.js"></script>
 <script src="../static/vendors/fullcalendar/dist/locale-all.js"></script>

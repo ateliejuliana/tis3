@@ -2438,12 +2438,12 @@ function init_calendar() {
         },
         eventClick: function (calEvent, jsEvent, view) {
             $('#fc_edit').click();
-            $('#title2').val(calEvent.title);
+            $('#selectcliente').val(calEvent.title);
 
             categoryClass = $("#event_type").val();
 
             $(".antosubmit2").on("click", function () {
-                calEvent.title = $("#title2").val();
+                calEvent.title = $("#selectcliente").val();
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 $('.antoclose2').click();
